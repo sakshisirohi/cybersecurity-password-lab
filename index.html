@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Password Strength and Breach Awareness Lab"
+    >
+
+    <title>Password Security Lab</title>
+
+    <!-- CSS FILE -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <h1>Password Security Lab</h1>
+
+        <p>
+            Learn how password strength, predictable patterns
+            and security awareness can affect your online safety.
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="container">
+
+
+        <!-- =========================
+             PASSWORD STRENGTH CHECKER
+        ========================== -->
+
+        <section class="card checker">
+
+            <h2>Password Strength Checker</h2>
+
+            <label for="password">
+                Enter a password to analyze:
+            </label>
+
+
+            <div class="password-box">
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="new-password"
+                    aria-describedby="password-help"
+                    placeholder="Enter password..."
+                >
+
+                <button
+                    type="button"
+                    id="togglePassword"
+                    aria-label="Show password"
+                >
+                    Show
+                </button>
+
+            </div>
+
+
+            <p id="password-help">
+
+                Your password is analyzed in your browser.
+                Passwords are not stored by this application.
+
+            </p>
+
+
+            <!-- STRENGTH METER -->
+
+            <div class="strength-section">
+
+                <label for="strengthMeter">
+                    Password Strength
+                </label>
+
+                <meter
+                    id="strengthMeter"
+                    min="0"
+                    max="4"
+                    value="0"
+                >
+                </meter>
+
+                <p id="strengthText">
+                    Enter a password
+                </p>
+
+            </div>
+
+
+            <!-- PASSWORD INFORMATION -->
+
+            <div class="info-grid">
+
+                <div>
+
+                    <strong>Entropy</strong>
+
+                    <p id="entropyValue">
+                        0 bits
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Estimated Crack Time
+                    </strong>
+
+                    <p id="crackTime">
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SECURITY FEEDBACK -->
+
+            <div class="feedback">
+
+                <h3>Security Feedback</h3>
+
+                <ul id="feedbackList">
+
+                    <li>
+                        Enter a password to receive feedback.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PASSWORD GENERATOR
+        ========================== -->
+
+        <section class="card generator">
+
+            <h2>Secure Password Generator</h2>
+
+
+            <fieldset>
+
+                <legend>
+                    Generator Options
+                </legend>
+
+
+                <label for="passwordLength">
+                    Password Length:
+                </label>
+
+
+                <input
+                    type="range"
+                    id="passwordLength"
+                    min="8"
+                    max="32"
+                    value="16"
+                >
+
+
+                <output id="lengthOutput">
+                    16
+                </output>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="includeUppercase"
+                        checked
+                    >
+
+                    Uppercase Letters
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="includeLowercase"
+                        checked
+                    >
+
+                    Lowercase Letters
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="includeNumbers"
+                        checked
+                    >
+
+                    Numbers
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="includeSymbols"
+                        checked
+                    >
+
+                    Symbols
+
+                </label>
+
+            </fieldset>
+
+
+            <button
+                type="button"
+                id="generatePassword"
+                class="primary-button"
+            >
+
+                Generate Strong Password
+
+            </button>
+
+
+            <div class="generated-password">
+
+                <input
+                    type="text"
+                    id="generatedPassword"
+                    readonly
+                    placeholder="Generated password appears here"
+                >
+
+
+                <button
+                    type="button"
+                    id="copyPassword"
+                >
+
+                    Copy
+
+                </button>
+
+            </div>
+
+
+            <p id="copyMessage"></p>
+
+        </section>
+
+
+
+        <!-- =========================
+             PASSPHRASE GENERATOR
+        ========================== -->
+
+        <section class="card passphrase">
+
+            <h2>Memorable Passphrase</h2>
+
+            <p>
+                Generate a memorable phrase using randomly
+                selected words.
+            </p>
+
+
+            <button
+                type="button"
+                id="generatePassphrase"
+                class="primary-button"
+            >
+
+                Generate Passphrase
+
+            </button>
+
+
+            <div class="generated-password">
+
+                <input
+                    type="text"
+                    id="generatedPassphrase"
+                    readonly
+                    placeholder="Passphrase appears here"
+                >
+
+
+                <button
+                    type="button"
+                    id="copyPassphrase"
+                >
+
+                    Copy
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             BREACH AWARENESS
+        ========================== -->
+
+        <section class="card breach-check">
+
+            <h2>Password Breach Awareness</h2>
+
+
+            <p>
+                Check whether the password appears in known
+                breach data using a privacy-preserving
+                k-anonymity method.
+            </p>
+
+
+            <p>
+                The complete password is not sent to the
+                breach service.
+            </p>
+
+
+            <button
+                type="button"
+                id="checkBreach"
+                class="primary-button"
+            >
+
+                Check Password Breach
+
+            </button>
+
+
+            <p
+                id="breachStatus"
+                aria-live="polite"
+            >
+
+                Breach check is currently off.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             SECURITY AWARENESS LESSONS
+        ========================== -->
+
+        <section class="card lessons">
+
+            <h2>Security Awareness Lessons</h2>
+
+
+            <!-- LESSON 1 -->
+
+            <article class="lesson">
+
+                <h3>
+                    Lesson 1: Spot the Phishing Email
+                </h3>
+
+
+                <p>
+                    Which sign can indicate that an email
+                    may be suspicious?
+                </p>
+
+
+                <button
+                    type="button"
+                    class="lesson-option"
+                    data-answer="wrong"
+                >
+
+                    A. It contains your name.
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="lesson-option"
+                    data-answer="correct"
+                >
+
+                    B. It asks you to urgently click
+                    an unknown link.
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="lesson-option"
+                    data-answer="wrong"
+                >
+
+                    C. It has normal spelling.
+
+                </button>
+
+
+                <p class="lesson-result"></p>
+
+            </article>
+
+
+
+            <!-- LESSON 2 -->
+
+            <article class="lesson">
+
+                <h3>
+                    Lesson 2: Spot a Suspicious URL
+                </h3>
+
+
+                <p>
+                    Which situation should make you
+                    more cautious?
+                </p>
+
+
+                <button
+                    type="button"
+                    class="lesson-option"
+                    data-answer="wrong"
+                >
+
+                    A. A website address you recognize
+                    and normally use.
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="lesson-option"
+                    data-answer="correct"
+                >
+
+                    B. An unexpected login link with a
+                    strange or unfamiliar domain.
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="lesson-option"
+                    data-answer="wrong"
+                >
+
+                    C. A website you reached by typing
+                    its known address yourself.
+
+                </button>
+
+
+                <p class="lesson-result"></p>
+
+            </article>
+
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress">
+
+                <h3>
+                    Lesson Progress
+                </h3>
+
+
+                <p id="progressText">
+                    0 lessons completed
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            Password Security &amp; Breach Awareness Lab
+        </p>
+
+
+        <p>
+            Educational cybersecurity project.
+            Passwords are never stored.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT MODULE
+    ========================== -->
+
+    <script
+        type="module"
+        src="js/main.js"
+    ></script>
+
+
+</body>
+
+</html>
